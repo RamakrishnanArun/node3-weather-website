@@ -9,10 +9,17 @@ const forecast = (longitude, latitude, callback) => {
         } else if (body.error) {
             callback({error: body.error}, undefined)
         } else {
+            const summary = body.daily.data[0].summary
+            const temperature = body.currently.temperature
+            const rainChance = body.currently.precipProbability * 100
+            const humidity = body.currently.humidity * 100
+            const daySummary = summary + ". The temperature is currently " + temperature + "C with a " + rainChance + "% chance of rain." + "The humidity is " + humidity + "%."
             callback(undefined, {
-                daySummary: body.daily.data[0].summary,
-                temperature: body.currently.temperature,
-                rainChance: body.currently.precipProbability * 100
+                summary,
+                temperature,
+                rainChance,
+                humidity,
+                daySummary 
             })
         }
     })
