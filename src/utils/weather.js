@@ -13,7 +13,7 @@ const forecast = (longitude, latitude, callback) => {
             const temperature = body.currently.temperature
             const rainChance = body.currently.precipProbability * 100
             const humidity = body.currently.humidity * 100
-            const daySummary = summary + " The temperature is currently " + temperature + "C with a " + rainChance + "% chance of rain." + "The humidity is " + humidity + "%."
+            const daySummary = summary + 'The temperature is currently ' + temperature + 'C with a ' + rainChance + '% chance of rain.' + 'The humidity is ' + humidity + '%.'
             callback(undefined, {
                 summary,
                 temperature,
